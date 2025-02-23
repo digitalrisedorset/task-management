@@ -44,6 +44,14 @@ export const User = list({
 
         password: password({ validation: { isRequired: true } }),
 
+        topicPreference: relationship({
+            ref: 'TaskTopic.userPreference',
+        }),
+        taskTopics: relationship({
+            ref: 'TaskTopic.user',
+            many: true
+        }),
+
         todos: relationship({ ref: 'Task.assignedTo', many: true }),
 
         createdAt: timestamp({

@@ -3,22 +3,20 @@ import { relationship, text, timestamp} from "@keystone-6/core/fields";
 import {allowAll} from "@keystone-6/core/access";
 import type {Session} from "../schema";
 
-export const Task = list({
+export const TaskTopic = list({
     access: allowAll,
-    ui: {
-        listView: {
-            initialColumns: ['id', 'label', 'assignedTo', 'createdAt'],
-        },
-    },
     fields: {
         label: text(),
-        description: text(),
-        assignedTo: relationship({ ref: 'User.todos' }),
-        followup: relationship({ref: 'FollowUp.task'}),
-        createdAt: timestamp({
-            defaultValue: { kind: 'now' },
+        tasks: relationship({
+            ref: 'Task.topic',
+            many: true
         }),
-        completedAt: timestamp(),
+        user: relationship({
+            ref: 'User.taskTopics',
+        }),
+        userPreference: relationship({
+            ref: 'User.topicPreference',
+        }),
     },
     hooks: {
         resolveInput: async ({ item, resolvedData, context }) => {
@@ -27,7 +25,7 @@ export const Task = list({
                 throw new Error('You must be logged in to do this!');
             }
 
-            resolvedData.assignedTo = { connect: { id: sesh.itemId} }
+            resolvedData.user = { connect: { id: sesh.itemId} }
 
             return resolvedData;
         },

@@ -20,7 +20,7 @@ export default withAuth(
   config({
       server: {
           cors: { origin: [keystoneconfig.frontend.host, keystoneconfig.backend.host], credentials: true },
-          port: 3000,
+          port: keystoneconfig.backend.port,
           maxFileSize: 200 * 1024 * 1024,
           extendExpressApp: async (app, commonContext) => { /* ... */ },
           extendHttpServer: async (httpServer, commonContext) => { /* ... */ },
@@ -37,7 +37,7 @@ export default withAuth(
     },
     lists,
       ui: {
-          isAccessAllowed: ()=> true,
+         isAccessAllowed: ()=> true,
           // only admins can view the AdminUI
           // isAccessAllowed: (context) => {
           //     return context.session?.data?.isAdmin ?? false
