@@ -37,10 +37,10 @@ This system is designed with three independent components:
 - **Deployment:** AWS
 
 ### Next Steps
-- ✅ Add authentication (JWT, OAuth)
-- ✅ Extend API logic (AI, analytics)
-- ✅ Optimize caching (Redis, API Gateway)
-- ✅ Set up CI/CD for automated deployment
+- Add authentication (JWT, OAuth)
+- Extend API logic (AI, analytics)
+- Optimize caching (Redis, API Gateway)
+- Set up CI/CD for automated deployment
 
 ## Other thoughts
 This system has a frontend that uses NextJS. The frontend presents the interfaces to deliver all the features available
