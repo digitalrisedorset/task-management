@@ -3,6 +3,7 @@ import {useForm} from "@/components/global/hooks/useForm";
 import {Form} from "@/components/global/styles/Form";
 import {Feedback} from "@/components/global/components/Feedback";
 import {useCreateTask} from "@/components/task/graphql/useTaskCreate";
+import {TextArea} from "@/components/global/components/Input/TextArea";
 
 export const NewTask: React.FC = () => {
     const router = useRouter();
@@ -38,11 +39,8 @@ export const NewTask: React.FC = () => {
                 </label>
                 <label htmlFor="email">
                     Description
-                    <textarea
-                        required
+                    <TextArea
                         name="description"
-                        rows={6}
-                        placeholder="Description"
                         value={inputs.description}
                         onChange={handleChange}
                     />

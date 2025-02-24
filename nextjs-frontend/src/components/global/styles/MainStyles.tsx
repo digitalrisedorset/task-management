@@ -14,6 +14,7 @@ export const MainStyles = styled.main`
     height: 100vh;
 
     @media (max-width: 600px) {
+        grid-template-columns: 0px 1fr;
         grid-template-rows: 100px 1fr 3fr;
         width: 100%;
     }

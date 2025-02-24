@@ -123,28 +123,30 @@ export const TaskList = styled.section`
 export const TaskStyles = styled.div`
     position: relative;
     background-color: var(--red);
-    padding: 10px;
+    padding: 10px 0 10px 10px;
     border-radius: 5px;
     background-size:     cover;
     background-repeat:   no-repeat;
     background-position: top left;
-    height: 140px;
+    height: 180px;
     .title {
         display: block;
         color: white;
         text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
         font-weight: normal;
-        font-size: 1.2rem;
+        font-size: 1rem;
         margin-bottom: 1rem;
         width: 50%;
         text-align: left;
+        height: 40px;
+        overflow: hidden;
     }
     .description {
         font-size: 0.9rem;
         text-align: left;
         display: block;
         width: 60%;
-        height: 50px;
+        height: 80px;
         overflow: hidden;
     }
     .date-created {
@@ -171,13 +173,13 @@ export const TaskStyles = styled.div`
     }
     button {
         position: relative;
-       margin-right: 5px;
+        margin-right: 5px;
         float: right;
     }
     
     @media (max-width: 600px) {
         .title {
-            font-size: 2rem;
+            font-size: 1rem;
         }
     }
 `

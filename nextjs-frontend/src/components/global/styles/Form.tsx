@@ -30,7 +30,7 @@ export const Form = styled.form`
     width: 100%;
     padding: 0.5rem;
       font-size: 1.2rem;
-    border: 1px solid black;
+    border: 1px solid var(--red);
     &:focus {
       outline: 0;
       border-color: var(--black);
@@ -80,10 +80,12 @@ export const Form = styled.form`
     @media (max-width: 600px) {
         padding: 10px;
         input,
-        textarea,
         select {
             width: 100%;
             height: 40px;
+        }
+        textarea {
+            width: 100%;
         }
         label {
             font-size: 1.2rem;

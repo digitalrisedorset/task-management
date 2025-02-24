@@ -23,6 +23,7 @@ export const SelectStyle = styled.div`
     display: block;
     text-align: left;
     line-height: 1.4rem;
+    margin: 1rem 0;
     label {
         padding: 5px;
     }
@@ -37,9 +38,17 @@ export const PreferenceChoice = styled.div<PreferenceProps>`
     border: ${(props) => props.selected === OPTION_SELECTED && `1px solid var(--red);`};
     background: var(--lightgrey);
     margin: 5px 0;
-    padding: 5px;
+    padding: 0px;
     input {
         visibility: hidden;
+        margin: 0;
+        padding: 0;
+        height: 0;
+    }
+    label {
+        margin: 0;
+        padding: 0 0 10px 10px;
+        font-size: 1rem;
     }
 `
 

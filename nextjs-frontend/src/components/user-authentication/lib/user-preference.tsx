@@ -28,8 +28,6 @@ export const getUserPreferenceVariables = (userId: string, fields: TaskPreferenc
         }
     }
 
-    console.log('data', data)
-
     return {
         "data": data,
         "where": {

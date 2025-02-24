@@ -6,6 +6,7 @@ import {KeystoneTask} from "@/components/task/types/task";
 import {router} from "next/client";
 import {TopicSelect} from "@/components/task/components/Task/TopicSelect";
 import {useTaskTopicState} from "@/state/TopicStateProvider";
+import {TextArea} from "@/components/global/components/Input/TextArea";
 
 export interface EditTaskProps {
     task: KeystoneTask
@@ -72,12 +73,9 @@ export const EditTask: React.FC<EditTaskProps> = ({task}: EditTaskProps) => {
                 </label>
                 <label htmlFor="description">
                     Description
-                    <textarea
-                        required
+                    <TextArea
                         name="description"
-                        rows={6}
-                        placeholder="Description"
-                        value={inputs?.description}
+                        value={inputs.description}
                         onChange={handleChange}
                     />
                 </label>

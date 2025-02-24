@@ -30,9 +30,11 @@ const NavStyles = styled.menu`
     @media (max-width: 600px) {
         padding: 0 10px;
         gap: 10px;
+        margin-left: 80px;
         a, button {
             font-size: 1rem;
-            padding:4px
+            padding:4px;
+            width:70px;
         }
         .venue-title {
             font-size:1.0rem;
