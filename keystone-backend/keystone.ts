@@ -37,11 +37,11 @@ export default withAuth(
     },
     lists,
       ui: {
-         isAccessAllowed: ()=> true,
+         /*isAccessAllowed: ()=> true,*/
           // only admins can view the AdminUI
-          // isAccessAllowed: (context) => {
-          //     return context.session?.data?.isAdmin ?? false
-          // },
+          isAccessAllowed: (context) => {
+              return context.session?.data?.isAdmin ?? false
+          },
       },
     session,
   })
