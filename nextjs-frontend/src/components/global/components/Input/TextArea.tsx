@@ -1,11 +1,13 @@
 import React, {useEffect, useRef} from "react";
 import {capitalise} from "@/lib/string";
+import {Property} from "csstype";
+import BoxSizing = Property.BoxSizing;
+import Resize = Property.Resize;
 
 interface TextAreaProps {
     name: string
-    value: string
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-    style: string
+    value: string | number
+    onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void
 }
 
 export const TextArea: React.FC<TextAreaProps> = ({name, value, onChange}: TextAreaProps) => {
@@ -21,7 +23,14 @@ export const TextArea: React.FC<TextAreaProps> = ({name, value, onChange}: TextA
         focusInput()
     }, [value]);
 
-    const style = {
+    const style: {
+        minHeight: string,
+        maxHeight: string,
+        resize: Resize | undefined,
+        padding: string,
+        boxSizing: BoxSizing | undefined,
+        overflow: string
+    } = {
         minHeight: "38px",
         maxHeight: "200px", // Adjust as needed
         resize: "none",
