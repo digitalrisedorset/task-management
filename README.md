@@ -2,6 +2,12 @@
 
 ## How is the system designed?
 
+### Overview
+This system is designed with three independent components:
+- **KeystoneJS (Backend)**: Acts as a database wrapper with GraphQL.
+- **NextJS (Frontend)**: Consumes both KeystoneJS and a separate Node.js API.
+- **Node.js API (Backend Services)**: Handles business logic and third-party integrations.
+
          ┌───────────────────────────┐
          │         NextJS (UI)        │
          │   - Apollo Client (GraphQL)│
@@ -18,10 +24,25 @@
 │ - Data Hooks   │  │ - Third-party     │
 └────────────────┘  └───────────────────┘
 
-This system has a backend using the system KeystoneJS. This backend has 2 purposes.
-- It exposes a GraphQL schema that is powered by Postgres database.
-- It also ensures the system integrity by taking care of data triggers build-in in custom mutations/hooks/queries.
+### How It Works
+1. **NextJS** acts as the central orchestrator, consuming both KeystoneJS and the Node.js API.
+2. **KeystoneJS** is only responsible for exposing a GraphQL API to manage database operations.
+3. **Node.js API** provides additional business logic and third-party integrations (e.g., payments, AI services).
+4. **KeystoneJS and Node.js API are completely decoupled**—they do not interact with each other.
 
+### Technology Stack
+- **Frontend:** NextJS, Apollo Client, React Hooks, Styled Components
+- **Backend (Database Wrapper):** KeystoneJS, PostgreSQL
+- **Backend (Business Logic):** Node.js (Express, REST)
+- **Deployment:** AWS
+
+### Next Steps
+- ✅ Add authentication (JWT, OAuth)
+- ✅ Extend API logic (AI, analytics)
+- ✅ Optimize caching (Redis, API Gateway)
+- ✅ Set up CI/CD for automated deployment
+
+## Other thoughts
 This system has a frontend that uses NextJS. The frontend presents the interfaces to deliver all the features available
 to web users. This part of the system has some specific additions:
 - it uses `styled-component` to make the styling. (although I did hesitate to use TailwindCss, I find this approach simple and efficient.
@@ -31,7 +52,7 @@ to web users. This part of the system has some specific additions:
 - it uses some states that are not using Redux. I started with Redux and found that it was having too much boilerplates. Using the approach I use creates
   a new state with `use-immer` or just `useState` with only 1 file. This approach works well with hooks.
 
-## Final thoughts
+### Typescript
 Typescript is a big part for the whole project. This language helps me to capture the bugs whilst I am writing my code. 
 The strong part with using typescript is that I use it in both backend and frontend.
 --> this particular aspect has meant all my codebase is written with a consistent style and that means less prone to bugs 
@@ -46,10 +67,10 @@ This system does not use any API. I have another project that uses this same arc
 This has given me the confidence that this approach to use the Javascript language in all my environments scales well and has yet more potential to be plugged in
 with other environments easily
 
-## Deployment
+### Deployment
 I use AWS/PM2 and a ssh script at the moment
 
-## Roadmap
+### Roadmap
 - to add a NodeJS backend to deliver any API services required in this system
 - to add OpneAI features to translate some content saved in this system
 - to add test coverage using either cypress or jest
