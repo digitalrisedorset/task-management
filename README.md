@@ -1,5 +1,9 @@
 # R&D system meant to become a reusable microservice framework
 
+This system implements a Task-Planner. It helps managing our schedule: by structuring tasks in topics, we can browse our daily tasks, 
+priotitise them, mark them completed. The system is fully compatible with mobile and that makes it handy when we are on the go and we want to
+create a task that we want to remember so that we get organised.
+
 ## How is the system designed?
 
 ### Overview
@@ -43,20 +47,22 @@ This system is designed with three independent components:
 - ✅ Set up CI/CD for automated deployment
 
 ## Other thoughts
+
+### Code organisation
 This system has a frontend that uses NextJS. The frontend presents the interfaces to deliver all the features available
 to web users. This part of the system has some specific additions:
 - it uses `styled-component` to make the styling. (although I did hesitate to use TailwindCss, I find this approach simple and efficient.
   Since I am not a frontend engineer, it serves the purpose to deliver the styling without taking time for this requirement)
-- it uses Apollo to handle the GraphQL communication. Unlike what I have seen in the past,
-  I have wrapped my queries and mutations in hooks to separate the functionality and the rendering  in my React components.
+- it uses Apollo to handle the GraphQL communication. Unlike what I have seen in the past, I have wrapped my queries and mutations in hooks 
+to separate the functionality and the rendering in my React components.
 - it uses some states that are not using Redux. I started with Redux and found that it was having too much boilerplates. Using the approach I use creates
   a new state with `use-immer` or just `useState` with only 1 file. This approach works well with hooks.
 
 ### Typescript
 Typescript is a big part for the whole project. This language helps me to capture the bugs whilst I am writing my code. 
 The strong part with using typescript is that I use it in both backend and frontend.
---> this particular aspect has meant all my codebase is written with a consistent style and that means less prone to bugs 
-due to using different technologies
+--> this particular aspect has meant all my codebase is written with a consistent style. That simplifies the learning curve  
+to consoliate the understandng of this language and makes the system less prone to bugs due to using different technologies
 
 I have created a patterns to deliver my React components: each data entity has its own directory to implement the component. 
 Within each of these entity folder, I can have the following sub-folders: components, graphql, hooks, models, state, styles, types
