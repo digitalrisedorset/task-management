@@ -41,10 +41,10 @@ This system is designed with three independent components:
 - **Deployment:** AWS
 
 ### Next Steps
-- ✅ Add authentication (JWT, OAuth)
-- ✅ Extend API logic (AI, analytics)
-- ✅ Optimize caching (Redis, API Gateway)
-- ✅ Set up CI/CD for automated deployment
+- Add authentication (JWT, OAuth)
+- Extend API logic (AI, analytics)
+- Optimize caching (Redis, API Gateway)
+- Set up CI/CD for automated deployment
 
 ## Other thoughts
 
