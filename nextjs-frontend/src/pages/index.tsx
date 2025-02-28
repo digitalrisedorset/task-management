@@ -5,6 +5,7 @@ import {InitFilter} from "@/components/task/components/Preference/InitFilter";
 import {EventFilterStyles, ListHeader} from "@/components/task/styles/TaskFilterStyles";
 import {TopicFilter} from "@/components/task/components/Preference/TopicFilter";
 import {ResetPreferenceFilter} from "@/components/task/components/Preference/ResetPreferenceFilter";
+import {StatusFilter} from "@/components/task/components/Preference/StatusFilter";
 
 export default function Home() {
     const user = useUser()
@@ -20,23 +21,22 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
         <>
-            {(user.topicPreference !== undefined) &&  (<>
+            {(user.topicPreference !== null && user.hideComplete !== null) &&  (<>
                 <ListHeader>
                     <EventFilterStyles>
                         <TopicFilter/>
+                        <StatusFilter/>
                         <ResetPreferenceFilter/>
                     </EventFilterStyles>
                     <UserTaskList />
                 </ListHeader>
             </>)
             }
-            {(user.topicPreference === undefined) &&  (<>
+            {(user.topicPreference === null || user.hideComplete === null) &&  (<>
                 <InitFilter />
             </>)
             }
         </>
-
-
     </>
   );
 }

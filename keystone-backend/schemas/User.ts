@@ -2,6 +2,7 @@ import {list} from "@keystone-6/core";
 import {checkbox, password, relationship, text, timestamp} from "@keystone-6/core/fields";
 import {allowAll} from "@keystone-6/core/access";
 import type {Session} from "../schema";
+import {topicStatusFields} from "./topicStatus";
 
 export function isAdminOrSameUser ({ session }: { session?: Session }) {
     // you need to have a session to do this
@@ -47,6 +48,7 @@ export const User = list({
         topicPreference: relationship({
             ref: 'TaskTopic.userPreference',
         }),
+        ...topicStatusFields,
         taskTopics: relationship({
             ref: 'TaskTopic.user',
             many: true

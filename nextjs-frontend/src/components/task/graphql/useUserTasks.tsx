@@ -3,11 +3,13 @@ import gql from "graphql-tag";
 import {useFilter} from "@/components/task/hooks/useFilter";
 
 export const TASKS_QUERY = gql`
-    query Tasks($where: TaskWhereInput!) {
-      tasks(where: $where) {
+    query Tasks($where: TaskWhereInput!, $orderBy: [TaskOrderByInput!]!) {
+      tasks(where: $where, orderBy: $orderBy) {
         id
         label
         description
+        priority
+        estimatedTime
         createdAt
         updatedAt
         completedAt
@@ -21,10 +23,10 @@ export const useTasks = () => {
     const tasksData = useQuery(TASKS_QUERY, {
         variables: {
             "where": filter,
-            "orderBy": [{"createdAt": "desc"}],
-        }
-        }
-    );
+            "orderBy": [{"priority": "desc"}],
+        },
+        fetchPolicy: "cache-and-network"
+    });
 
     return tasksData
 }

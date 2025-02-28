@@ -15,6 +15,10 @@ export const useFilter = () => {
         filter['topic'] = { "id": {"equals": topic} }
     }
 
+    if (user.hideComplete === true) {
+        filter['completedAt'] = null
+    }
+
     filter['assignedTo'] = {"id": {"equals": user.id}}
 
     return filter

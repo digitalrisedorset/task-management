@@ -7,6 +7,7 @@ import {router} from "next/client";
 import {TopicSelect} from "@/components/task/components/Task/TopicSelect";
 import {useTaskTopicState} from "@/state/TopicStateProvider";
 import {TextArea} from "@/components/global/components/Input/TextArea";
+import React from "react";
 
 export interface EditTaskProps {
     task: KeystoneTask
@@ -20,7 +21,7 @@ export const EditTask: React.FC<EditTaskProps> = ({task}: EditTaskProps) => {
          priority: Number(task.priority)
      })
     const [updateTask] = useUpdateTask()
-    //const [improvedDescription, setimprovedDescription] = useState('')
+    //const [improvedDescription, setImprovedDescription] = useState('')
     const {topicState} = useTaskTopicState();
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -48,10 +49,12 @@ export const EditTask: React.FC<EditTaskProps> = ({task}: EditTaskProps) => {
         router.push({pathname: `/`});
     }
 
-    // const handleTextImprovement = async (e: any) => {
+    // const handleTextImprovement = async (e: React.FormEvent) => {
     //     e.preventDefault();
-    //     const newtext = await improveText(inputs.description)
-    //     setimprovedDescription(newtext)
+    //     if (inputs.description!== '') {
+    //         const newtext = await improveText(inputs.description as string)
+    //         setImprovedDescription(newtext)
+    //     }
     // }
 
     return (
@@ -82,19 +85,19 @@ export const EditTask: React.FC<EditTaskProps> = ({task}: EditTaskProps) => {
                 {/*<label htmlFor="improved-description">*/}
                 {/*    Improved Description*/}
                 {/*    <textarea*/}
-                {/*        required*/}
                 {/*        name="improved-description"*/}
                 {/*        rows={6}*/}
                 {/*        placeholder="AI Input"*/}
                 {/*        value={improvedDescription}*/}
+                {/*        onChange={(e: ChangeEventHandler<HTMLTextAreaElement>) => setImprovedDescription(e.target.value)}*/}
                 {/*    />*/}
                 {/*</label>*/}
+                {/*<button type="button" className="openai-button" onClick={handleTextImprovement}>Suggest Improvements*/}
+                {/*</button>*/}
                 <label htmlFor="improved-description">
                     Task Topic
                     <TopicSelect task={task}/>
                 </label>
-                {/*<button type="button" className="openai-button" onClick={handleTextImprovement}>Suggest Improvements
-                </button>*/}
                 <label htmlFor="estimatedTime">
                     Estimated Time
                     <input

@@ -11,6 +11,7 @@ const CURRENT_USER_QUERY = gql`
             id
             label
         }
+        hideComplete
       }
     }
   }
@@ -21,6 +22,7 @@ export interface UserInformation {
     email: string
     name: string
     topicPreference: TopicPreference
+    hideComplete: boolean
 }
 
 export interface TopicPreference {

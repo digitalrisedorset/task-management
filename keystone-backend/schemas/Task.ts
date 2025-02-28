@@ -17,7 +17,7 @@ export const Task = list({
         followup: relationship({ref: 'FollowUp.task'}),
         topic: relationship({ref: 'TaskTopic.tasks'}),
         estimatedTime: integer(),
-        priority: integer(),
+        priority: integer({defaultValue: 0}),
         skill: relationship({ref: 'Skill.tasks'}),
         createdAt: timestamp({
             defaultValue: { kind: 'now' },

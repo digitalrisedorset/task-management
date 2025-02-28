@@ -112,7 +112,7 @@ export const TaskList = styled.section`
     display: grid;
     grid-column: 2 / -1;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
+    gap: 13px;
     padding: 10px;
 
     @media (max-width: 600px) {
@@ -159,6 +159,30 @@ export const TaskStyles = styled.div`
         font-size: 0.7rem;
         display: block;
         padding-top: 1rem;
+    }
+    .priority {
+        position: absolute;
+        right: -10px;
+        top: -10px;        
+        height: 25px;
+        width: 25px;
+        background: #725199;
+        font-size: small;
+        padding: 5px 7px;
+        border-radius: 20px;
+        color: white;
+    }
+    .estimatedTime {
+        position: absolute;
+        right: 40px;
+        top: -10px;
+        height: 25px;
+        width: 50px;
+        background: #725199;
+        font-size: x-small;
+        padding: 7px 7px;
+        border-radius: 20px;
+        color: white;
     }
     .date-completed {
         position: absolute;

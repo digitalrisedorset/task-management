@@ -2,7 +2,7 @@ import React from "react";
 import {Label} from "@/components/global/styles/Form";
 import {useUser} from "@/components/user-authentication/hooks/useUser";
 import {getUserPreferenceVariables} from "@/components/user-authentication/lib/user-preference";
-import {TaskPreferenceFilterType} from "@/components/task/types/task";
+import {PREFERENCE_RESET, TaskPreferenceFilterType} from "@/components/task/types/task";
 import {useUserPreference} from "@/components/user-authentication/graphql/useUserPreference";
 import {ResetPrefence} from "@/components/task/styles/TaskFilterStyles";
 
@@ -14,7 +14,7 @@ export const ResetPreferenceFilter: React.FC = () => {
 
     const resetFilter = async () => {
         const preference: TaskPreferenceFilterType = {
-            'topicPreference': ''
+            'topicPreference': PREFERENCE_RESET
         }
 
         await updateUserPreference({

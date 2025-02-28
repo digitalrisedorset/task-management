@@ -34,6 +34,8 @@ export const Task: React.FC<TaskProps> = ({task}: TaskProps) => {
     return (
         <TaskStyles>
             <span className="title">{task.label}</span>
+            <span className="priority">{task.priority}</span>
+            {task.estimatedTime>0 && <span className="estimatedTime">{task.estimatedTime} mins</span>}
             <span className="description">{task.description}</span>
             <span className="date-created">created at:<br/> {getDate(task.createdAt)}</span>
             {task.completedAt !== null &&
