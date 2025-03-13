@@ -24,5 +24,5 @@ export const useFilter = () => {
         filter['assignedTo'] = {"id": {"equals": user.id}}
 
         return filter
-    }, [useUser, topic]);
+    }, [useUser, topic, filter, user]);
 }

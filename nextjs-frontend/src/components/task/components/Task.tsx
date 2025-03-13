@@ -3,7 +3,7 @@ import {TaskStyles} from "@/components/task/styles/TaskFilterStyles";
 import {KeystoneTask} from "@/components/task/types/task";
 import {useRouter} from "next/router";
 import {useUpdateTask} from "@/components/task/graphql/useUpdateTask";
-import {TASKS_QUERY, useTasks} from "@/components/task/graphql/useUserTasks";
+import {useTasks} from "@/components/task/graphql/useUserTasks";
 
 interface TaskProps {
     task: KeystoneTask

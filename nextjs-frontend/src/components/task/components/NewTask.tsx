@@ -5,6 +5,7 @@ import {Feedback} from "@/components/global/components/Feedback";
 import {useCreateTask} from "@/components/task/graphql/useTaskCreate";
 import {TextArea} from "@/components/global/components/Input/TextArea";
 import {useTaskTopic} from "@/components/tasktopic/graphql/useTaskTopic";
+import {Loading} from "@/components/global/components/Loading";
 
 export const NewTask: React.FC = () => {
     const router = useRouter();
@@ -22,6 +23,9 @@ export const NewTask: React.FC = () => {
         resetForm();
         router.push({pathname: `/`});
     }
+
+    if (loading) return <Loading />
+
     return (
         <Form method="POST" onSubmit={handleSubmit}>
             <h2>Create New Task</h2>
@@ -33,7 +37,7 @@ export const NewTask: React.FC = () => {
                         type="text"
                         name="label"
                         placeholder="Task Topic"
-                        value={data?.taskTopic?.label}
+                        value={data.taskTopic.label}
                         readOnly={true}
                     />
                 </label>
