@@ -4,6 +4,7 @@ import {Form} from "@/components/global/styles/Form";
 import {Feedback} from "@/components/global/components/Feedback";
 import {useCreateTask} from "@/components/task/graphql/useTaskCreate";
 import {TextArea} from "@/components/global/components/Input/TextArea";
+import {useTaskTopic} from "@/components/tasktopic/graphql/useTaskTopic";
 
 export const NewTask: React.FC = () => {
     const router = useRouter();
@@ -12,6 +13,7 @@ export const NewTask: React.FC = () => {
         description: '',
     });
     const [createTask] = useCreateTask(inputs)
+    const {data , loading} = useTaskTopic()
 
     async function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
@@ -25,6 +27,16 @@ export const NewTask: React.FC = () => {
             <h2>Create New Task</h2>
             <Feedback />
             <fieldset>
+                <label htmlFor="topic">
+                    Topic
+                    <input
+                        type="text"
+                        name="label"
+                        placeholder="Task Topic"
+                        value={data?.taskTopic?.label}
+                        readOnly={true}
+                    />
+                </label>
                 <label htmlFor="name">
                     Title
                     <input

@@ -3,6 +3,7 @@ import {useForm} from "@/components/global/hooks/useForm";
 import {Form} from "@/components/global/styles/Form";
 import {Feedback} from "@/components/global/components/Feedback";
 import {useCreateTaskTopic} from "@/components/tasktopic/graphql/useTaskTopicCreate";
+import {useTaskTopic} from "@/components/tasktopic/graphql/useTaskTopic";
 
 export const NewTaskTopic: React.FC = () => {
     const router = useRouter();
@@ -10,6 +11,7 @@ export const NewTaskTopic: React.FC = () => {
         label: '',
     });
     const [createTaskTopic] = useCreateTaskTopic(inputs)
+    const topic = useTaskTopic();
 
     async function handleSubmit(e: React.FormEvent) {
         e.preventDefault();

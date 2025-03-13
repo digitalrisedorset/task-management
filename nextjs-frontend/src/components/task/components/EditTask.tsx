@@ -21,7 +21,6 @@ export const EditTask: React.FC<EditTaskProps> = ({task}: EditTaskProps) => {
          priority: Number(task.priority)
      })
     const [updateTask] = useUpdateTask()
-    //const [improvedDescription, setImprovedDescription] = useState('')
     const {topicState} = useTaskTopicState();
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -48,14 +47,6 @@ export const EditTask: React.FC<EditTaskProps> = ({task}: EditTaskProps) => {
         resetForm();
         router.push({pathname: `/`});
     }
-
-    // const handleTextImprovement = async (e: React.FormEvent) => {
-    //     e.preventDefault();
-    //     if (inputs.description!== '') {
-    //         const newtext = await improveText(inputs.description as string)
-    //         setImprovedDescription(newtext)
-    //     }
-    // }
 
     return (
         <Form method="POST" onSubmit={handleSubmit}>

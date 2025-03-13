@@ -3,6 +3,7 @@ import {TaskStyles} from "@/components/task/styles/TaskFilterStyles";
 import {KeystoneTask} from "@/components/task/types/task";
 import {useRouter} from "next/router";
 import {useUpdateTask} from "@/components/task/graphql/useUpdateTask";
+import {TASKS_QUERY, useTasks} from "@/components/task/graphql/useUserTasks";
 
 interface TaskProps {
     task: KeystoneTask
@@ -11,6 +12,7 @@ interface TaskProps {
 export const Task: React.FC<TaskProps> = ({task}: TaskProps) => {
     const router = useRouter()
     const [updateTask] = useUpdateTask()
+    const { refetch } = useTasks();
 
     async function handleClick(e: React.FormEvent) {
         e.preventDefault(); // stop the form from submitting
@@ -21,14 +23,12 @@ export const Task: React.FC<TaskProps> = ({task}: TaskProps) => {
         e.preventDefault(); // stop the form from submitting
         await updateTask({
             variables: {
-                "data": {
-                    completedAt: (new Date()).toISOString(),
-                },
-                "where": {
-                    "id": task.id
-                },
+                "data": { completedAt: new Date().toISOString() },
+                "where": { "id": task.id }
             }
         }).catch(console.error);
+
+        refetch();
     }
 
     return (

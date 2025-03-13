@@ -20,7 +20,8 @@ export const EventList = styled.section`
 
 export const SelectStyle = styled.div`
     position: relative;
-    display: block;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     text-align: left;
     line-height: 1.4rem;
     margin: 1rem 0;
