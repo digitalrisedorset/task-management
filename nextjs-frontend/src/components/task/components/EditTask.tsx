@@ -8,6 +8,7 @@ import {TopicSelect} from "@/components/task/components/Task/TopicSelect";
 import {useTaskTopicState} from "@/state/TopicStateProvider";
 import {TextArea} from "@/components/global/components/Input/TextArea";
 import React from "react";
+import {useFlashMessage} from "@/state/FlassMessageState";
 
 export interface EditTaskProps {
     task: KeystoneTask
@@ -22,6 +23,7 @@ export const EditTask: React.FC<EditTaskProps> = ({task}: EditTaskProps) => {
      })
     const [updateTask] = useUpdateTask()
     const {topicState} = useTaskTopicState();
+    const {addSuccessMessage} = useFlashMessage()
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -44,8 +46,9 @@ export const EditTask: React.FC<EditTaskProps> = ({task}: EditTaskProps) => {
                 },
             }
         }).catch(console.error);
+        addSuccessMessage(`Your task was updated`)
         resetForm();
-        router.push({pathname: `/`});
+        router.push({pathname: `/task/${task.id}`});
     }
 
     return (

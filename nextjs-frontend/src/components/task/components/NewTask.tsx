@@ -21,7 +21,7 @@ export const NewTask: React.FC = () => {
 
         await createTask().catch(console.error);
         resetForm();
-        router.push({pathname: `/`});
+        router.push({pathname: `/tasks`});
     }
 
     if (loading) return <Loading />
